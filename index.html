@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bharath Kumar B — Lead Information Security Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0a1628;
+      --navy2:   #0f2044;
+      --blue:    #1a56db;
+      --blue2:   #2563eb;
+      --sky:     #3b82f6;
+      --accent:  #60a5fa;
+      --gold:    #f59e0b;
+      --white:   #f8fafc;
+      --muted:   #94a3b8;
+      --border:  rgba(255,255,255,0.08);
+      --card:    rgba(255,255,255,0.04);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 6vw;
+      background: rgba(10,22,40,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700;
+      letter-spacing: .02em;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: .88rem;
+      font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+      transition: color .25s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: grid; place-items: center;
+      padding: 120px 6vw 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26,86,219,.25) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(59,130,246,.12) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0; opacity: .06;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center; max-width: 1200px; width: 100%;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(26,86,219,.2); border: 1px solid rgba(96,165,250,.3);
+      color: var(--accent); font-size: .78rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: .35rem .9rem; border-radius: 99px;
+      margin-bottom: 1.4rem;
+      animation: fadeUp .8s ease both;
+    }
+    h1.hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 900; line-height: 1.05;
+      animation: fadeUp .8s .15s ease both;
+    }
+    h1.hero-name span {
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-title {
+      font-size: 1.1rem; font-weight: 400; color: var(--muted);
+      margin: 1rem 0 1.8rem;
+      animation: fadeUp .8s .25s ease both;
+    }
+    .hero-title strong { color: var(--white); font-weight: 600; }
+    .hero-stats {
+      display: flex; gap: 2.5rem;
+      animation: fadeUp .8s .35s ease both;
+    }
+    .stat-item { text-align: left; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: .75rem; color: var(--muted); font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase; margin-top: .3rem;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; margin-top: 2rem;
+      animation: fadeUp .8s .45s ease both;
+    }
+    .btn-primary {
+      background: var(--blue2); color: #fff;
+      padding: .75rem 1.8rem; border-radius: 8px;
+      font-weight: 600; font-size: .9rem;
+      text-decoration: none; letter-spacing: .02em;
+      transition: background .2s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--sky); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid rgba(96,165,250,.4); color: var(--accent);
+      padding: .75rem 1.8rem; border-radius: 8px;
+      font-weight: 600; font-size: .9rem;
+      text-decoration: none; letter-spacing: .02em;
+      transition: background .2s, transform .2s;
+    }
+    .btn-outline:hover { background: rgba(96,165,250,.08); transform: translateY(-2px); }
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px; padding: 2.5rem;
+      animation: fadeUp .8s .2s ease both;
+      position: relative; overflow: hidden;
+    }
+    .hero-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--accent), var(--gold));
+    }
+    .hc-row { display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem; }
+    .hc-icon {
+      width: 38px; height: 38px;
+      background: rgba(26,86,219,.2); border-radius: 8px;
+      display: grid; place-items: center; flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+    .hc-text strong { display: block; font-size: .9rem; font-weight: 600; }
+    .hc-text span { font-size: .8rem; color: var(--muted); }
+    .profile-photo-wrap {
+      display: flex; justify-content: center; margin-bottom: 1.6rem;
+    }
+    .profile-photo {
+      width: 110px; height: 110px; border-radius: 50%;
+      object-fit: cover; object-position: top center;
+      border: 3px solid rgba(96,165,250,.5);
+      box-shadow: 0 0 0 6px rgba(26,86,219,.15);
+    }
+    .cert-badges { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.4rem; }
+    .badge {
+      background: rgba(26,86,219,.15); border: 1px solid rgba(96,165,250,.25);
+      color: var(--accent); font-size: .72rem; font-weight: 600;
+      padding: .28rem .8rem; border-radius: 6px; letter-spacing: .04em;
+    }
+    .badge.gold {
+      background: rgba(245,158,11,.12); border-color: rgba(245,158,11,.3);
+      color: var(--gold);
+    }
+
+    /* ── SECTION BASE ────────────────────────────── */
+    section { padding: 100px 6vw; }
+    .section-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: .6rem; margin-bottom: .8rem;
+    }
+    .section-label::before {
+      content: ''; display: inline-block;
+      width: 28px; height: 2px; background: var(--accent);
+    }
+    h2.section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700; line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+    h2.section-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    /* ── ABOUT ───────────────────────────────────── */
+    #about { background: var(--navy2); }
+    .about-grid {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem;
+      align-items: start; max-width: 1200px;
+    }
+    .about-text p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .about-text p strong { color: var(--white); }
+    .domain-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+    .chip {
+      background: rgba(26,86,219,.12); border: 1px solid rgba(96,165,250,.2);
+      color: var(--white); font-size: .78rem; padding: .35rem .9rem; border-radius: 99px;
+    }
+    .about-highlights { display: flex; flex-direction: column; gap: 1.2rem; }
+    .highlight-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.4rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: border-color .25s;
+    }
+    .highlight-card:hover { border-color: rgba(96,165,250,.35); }
+    .hl-icon {
+      width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
+      display: grid; place-items: center; font-size: 1.2rem;
+    }
+    .hl-icon.blue { background: rgba(26,86,219,.2); }
+    .hl-icon.gold { background: rgba(245,158,11,.15); }
+    .hl-icon.green { background: rgba(16,185,129,.15); }
+    .hl-title { font-weight: 600; font-size: .92rem; margin-bottom: .25rem; }
+    .hl-desc { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── SKILLS ──────────────────────────────────── */
+    #skills { background: var(--navy); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.4rem; max-width: 1200px;
+    }
+    .skill-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.6rem;
+      transition: transform .25s, border-color .25s;
+    }
+    .skill-card:hover { transform: translateY(-4px); border-color: rgba(96,165,250,.35); }
+    .skill-card-header {
+      display: flex; align-items: center; gap: .8rem; margin-bottom: 1.2rem;
+    }
+    .sk-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: grid; place-items: center; font-size: 1.2rem;
+      background: rgba(26,86,219,.2);
+    }
+    .sk-title { font-weight: 700; font-size: .92rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .skill-tag {
+      background: rgba(255,255,255,.05); border: 1px solid var(--border);
+      color: var(--muted); font-size: .72rem;
+      padding: .25rem .6rem; border-radius: 6px;
+    }
+
+    /* ── EXPERIENCE ──────────────────────────────── */
+    #experience { background: var(--navy2); }
+    .timeline { max-width: 900px; position: relative; }
+    .timeline::before {
+      content: ''; position: absolute;
+      left: 18px; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--blue), transparent);
+    }
+    .tl-item {
+      padding-left: 60px; margin-bottom: 3rem; position: relative;
+    }
+    .tl-dot {
+      position: absolute; left: 6px; top: 6px;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--navy2); border: 2px solid var(--blue2);
+      display: grid; place-items: center;
+    }
+    .tl-dot.active { background: var(--blue2); border-color: var(--accent); }
+    .tl-dot-inner {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+    }
+    .tl-company {
+      font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: .3rem;
+    }
+    .tl-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; font-weight: 700; margin-bottom: .25rem;
+    }
+    .tl-period {
+      font-size: .8rem; color: var(--muted); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .tl-period .current {
+      background: rgba(16,185,129,.15); border: 1px solid rgba(16,185,129,.3);
+      color: #34d399; font-size: .7rem; font-weight: 700;
+      padding: .15rem .55rem; border-radius: 99px; letter-spacing: .06em;
+    }
+    .tl-body {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.6rem;
+    }
+    .tl-body ul { list-style: none; padding: 0; }
+    .tl-body ul li {
+      font-size: .88rem; color: var(--muted); line-height: 1.7;
+      padding: .45rem 0; border-bottom: 1px solid var(--border);
+      padding-left: 1.2rem; position: relative;
+    }
+    .tl-body ul li:last-child { border-bottom: none; }
+    .tl-body ul li::before {
+      content: '→'; position: absolute; left: 0;
+      color: var(--blue); font-size: .8rem;
+    }
+    .tl-skills-row {
+      display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem;
+    }
+    .tl-tag {
+      background: rgba(26,86,219,.12); border: 1px solid rgba(96,165,250,.2);
+      color: var(--accent); font-size: .7rem;
+      padding: .2rem .6rem; border-radius: 5px;
+    }
+
+    /* ── CERTIFICATIONS ──────────────────────────── */
+    #certifications { background: var(--navy); }
+    .cert-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.4rem; max-width: 1200px;
+    }
+    .cert-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.8rem;
+      position: relative; overflow: hidden;
+      transition: transform .25s, border-color .25s;
+    }
+    .cert-card:hover { transform: translateY(-4px); border-color: rgba(96,165,250,.35); }
+    .cert-card::after {
+      content: ''; position: absolute;
+      right: -20px; bottom: -20px;
+      width: 80px; height: 80px; border-radius: 50%;
+      background: rgba(26,86,219,.12);
+    }
+    .cert-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .cert-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: .4rem; }
+    .cert-org { font-size: .8rem; color: var(--muted); }
+
+    /* ── ACHIEVEMENTS ────────────────────────────── */
+    #achievements { background: var(--navy2); }
+    .ach-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.4rem; max-width: 1200px;
+    }
+    .ach-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.8rem;
+      border-left: 3px solid var(--gold);
+      transition: transform .25s;
+    }
+    .ach-card:hover { transform: translateY(-4px); }
+    .ach-year {
+      font-size: .72rem; font-weight: 700; color: var(--gold);
+      letter-spacing: .1em; text-transform: uppercase; margin-bottom: .4rem;
+    }
+    .ach-title { font-weight: 600; font-size: .95rem; margin-bottom: .4rem; }
+    .ach-org { font-size: .8rem; color: var(--muted); }
+
+    /* ── EDUCATION ───────────────────────────────── */
+    #education { background: var(--navy); }
+    .edu-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.4rem; max-width: 1200px;
+    }
+    .edu-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.6rem;
+      transition: border-color .25s;
+    }
+    .edu-card:hover { border-color: rgba(96,165,250,.35); }
+    .edu-degree { font-weight: 700; font-size: .92rem; margin-bottom: .3rem; }
+    .edu-school { font-size: .82rem; color: var(--muted); }
+
+    /* ── CONTACT ─────────────────────────────────── */
+    #contact {
+      background: var(--navy2);
+      text-align: center;
+    }
+    .contact-inner { max-width: 640px; margin: 0 auto; }
+    .contact-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 3rem;
+      display: flex; flex-direction: column; gap: 1.4rem;
+      align-items: center;
+    }
+    .contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: .95rem;
+    }
+    .contact-item a { color: var(--accent); text-decoration: none; }
+    .contact-item a:hover { text-decoration: underline; }
+    .c-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: rgba(26,86,219,.2); display: grid; place-items: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--navy); border-top: 1px solid var(--border);
+      text-align: center; padding: 2rem;
+      font-size: .8rem; color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ──────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">BK</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#achievements">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-tag">Open to Opportunities</div>
+      <h1 class="hero-name">Bharath<br/><span>Kumar B</span></h1>
+      <p class="hero-title">
+        <strong>Lead Information Security Engineer</strong><br/>
+        Azure Cloud Architect · CEH Certified · DevSecOps
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">13+</div>
+          <div class="stat-label">Years Exp.</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Industries</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a href="#experience" class="btn-primary">View Experience</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="profile-photo-wrap">
+        <img class="profile-photo" src="Photo.jpg" alt="Bharath Kumar B"/>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">🏦</div>
+        <div class="hc-text">
+          <strong>Wells Fargo</strong>
+          <span>July 2019 – Present</span>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📍</div>
+        <div class="hc-text">
+          <strong>Hyderabad, India</strong>
+          <span>Available for remote roles</span>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">✉️</div>
+        <div class="hc-text">
+          <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="23414b425142574b0d4142444442554251425356111263444e424a4f0d404c4e">[email&#160;protected]</a></strong>
+          <span>Primary Contact</span>
+        </div>
+      </div>
+      <div class="hc-row">
+        <div class="hc-icon">📱</div>
+        <div class="hc-text">
+          <strong>+91 8978255911</strong>
+          <span>Mobile</span>
+        </div>
+      </div>
+      <div class="cert-badges">
+        <span class="badge">AZ-204</span>
+        <span class="badge gold">CEH</span>
+        <span class="badge">DevSecOps</span>
+        <span class="badge">Cloud Architect</span>
+        <span class="badge">Azure PaaS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title">Security-first engineering <em>at scale</em></h2>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>Certified Azure Cloud Architect <strong>(AZ-204)</strong> and <strong>CEH-certified</strong> Information Security Professional with <strong>13+ years of experience</strong> in web development, cloud computing, and cybersecurity across healthcare, insurance, pharmaceutical, gaming, and banking domains.</p>
+      <p>Holds a <strong>Master's in Computer Applications</strong> from Osmania University. Expert in Secure SDLC, application security, risk &amp; compliance management, and secure architecture implementation.</p>
+      <p>Proven success in leading enterprise security initiatives, driving policy development, and embedding secure coding practices across development teams — from SAST tools to AI-powered threat analysis.</p>
+      <div class="domain-chips">
+        <span class="chip">Healthcare</span>
+        <span class="chip">Banking</span>
+        <span class="chip">Insurance</span>
+        <span class="chip">Pharmaceutical</span>
+        <span class="chip">Gaming</span>
+      </div>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-card">
+        <div class="hl-icon blue">🔐</div>
+        <div>
+          <div class="hl-title">Application Security Champion</div>
+          <div class="hl-desc">Expert in SAST (Fortify, Checkmarx), threat modelling, ThreadFix, and Software Composition Analysis with Black Duck.</div>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <div class="hl-icon gold">☁️</div>
+        <div>
+          <div class="hl-title">Cloud & DevSecOps Leader</div>
+          <div class="hl-desc">Skilled in building secure CI/CD pipelines with Git, Jenkins, Azure DevOps. Manages Docker, Kubernetes, Terraform &amp; Ansible.</div>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <div class="hl-icon green">🛡️</div>
+        <div>
+          <div class="hl-title">IAM & Compliance Expert</div>
+          <div class="hl-desc">Strong experience in Identity &amp; Access Management and regulatory compliance, including EMR/EHR certifications (CCHIT, ICSA Labs).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Technical Skills</div>
+  <h2 class="section-title">Technologies &amp; <em>Expertise</em></h2>
+  <div class="skills-grid reveal">
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="sk-icon">💻</div>
+        <div class="sk-title">Languages & Frameworks</div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">ASP.NET</span><span class="skill-tag">C#</span>
+        <span class="skill-tag">ASP.NET MVC</span><span class="skill-tag">.NET Core</span>
+        <span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">jQuery</span><span class="skill-tag">Knockout JS</span>
+        <span class="skill-tag">CSS3</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="sk-icon">☁️</div>
+        <div class="sk-title">Cloud & Infrastructure</div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Microsoft Azure PaaS</span>
+        <span class="skill-tag">Azure IaaS</span>
+        <span class="skill-tag">OpenShift</span>
+        <span class="skill-tag">PCF</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Kubernetes</span>
+        <span class="skill-tag">Terraform</span>
+        <span class="skill-tag">Ansible</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="sk-icon">🔒</div>
+        <div class="sk-title">Security Tools</div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Fortify (SAST)</span>
+        <span class="skill-tag">Checkmarx</span>
+        <span class="skill-tag">Black Duck (SCA)</span>
+        <span class="skill-tag">ThreadFix</span>
+        <span class="skill-tag">Cloud Qualys</span>
+        <span class="skill-tag">SonarQube</span>
+        <span class="skill-tag">HCP Vault</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="sk-icon">⚙️</div>
+        <div class="sk-title">DevOps & CI/CD</div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Azure DevOps</span>
+        <span class="skill-tag">Jenkins</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">Harness</span>
+        <span class="skill-tag">Artifactory</span>
+        <span class="skill-tag">UCD</span>
+        <span class="skill-tag">Git Actions</span>
+        <span class="skill-tag">TFS</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="sk-icon">🗄️</div>
+        <div class="sk-title">Data & Monitoring</div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">SQL Server</span>
+        <span class="skill-tag">Oracle</span>
+        <span class="skill-tag">Splunk</span>
+        <span class="skill-tag">AppDynamics</span>
+        <span class="skill-tag">AutoSys</span>
+        <span class="skill-tag">EPL/EPLX</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="sk-icon">🤝</div>
+        <div class="sk-title">Soft Skills & Methods</div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Agile/Scrum</span>
+        <span class="skill-tag">Strategic Planning</span>
+        <span class="skill-tag">API Design</span>
+        <span class="skill-tag">Technical Leadership</span>
+        <span class="skill-tag">Cybersecurity</span>
+        <span class="skill-tag">Decision-making</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">Career <em>Journey</em></h2>
+  <div class="timeline reveal">
+
+    <!-- Wells Fargo - Lead -->
+    <div class="tl-item">
+      <div class="tl-dot active"><div class="tl-dot-inner"></div></div>
+      <div class="tl-company">Wells Fargo</div>
+      <div class="tl-role">Lead Information Security Engineer</div>
+      <div class="tl-period">Feb 2025 – Present <span class="current">Current</span></div>
+      <div class="tl-body">
+        <ul>
+          <li>Led large-scale application technology transformation initiatives — migrating legacy apps from on-premise to cloud (PCF), containerization via OpenShift, and enterprise SQL database migrations ensuring scalability and business continuity.</li>
+          <li>Strengthened system security by implementing advanced encryption techniques and multi-factor authentication mechanisms.</li>
+          <li>Collaborated with data and DevOps teams to design scalable data pipelines for a cyber data lake generating actionable insights.</li>
+          <li>Presented Generative AI use cases at cybersecurity forums, identifying efficiency opportunities and supporting secure, cost-effective adoption strategies.</li>
+          <li>Owned full-cycle development of cybersecurity-focused applications with secure CI/CD workflows, containerized deployments, and embedded security checks; served as interim Scrum Master.</li>
+        </ul>
+        <div class="tl-skills-row">
+          <span class="tl-tag">Micro Services</span><span class="tl-tag">.NET Core</span>
+          <span class="tl-tag">OpenShift</span><span class="tl-tag">Python/Django</span>
+          <span class="tl-tag">Tachyon Gen AI</span><span class="tl-tag">Harness</span>
+          <span class="tl-tag">Cloud Qualys</span><span class="tl-tag">Blackduck</span>
+          <span class="tl-tag">SonarQube</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wells Fargo - Senior -->
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-company">Wells Fargo</div>
+      <div class="tl-role">Senior Information Security Engineer</div>
+      <div class="tl-period">Feb 2022 – Jan 2025</div>
+      <div class="tl-body">
+        <ul>
+          <li>Developed data governance, quality, and security strategies aligned with regulatory and business standards in collaboration with stakeholders.</li>
+          <li>Oversaw Agile adoption within cross-functional cybersecurity teams, driving CI/CD practices that reduced release cycles and accelerated secure feature deployment.</li>
+          <li>Owned complete deployment lifecycle managing Azure DevOps CI/CD pipelines from testing to production; drove DevSecOps with security reviews and compliance processes.</li>
+          <li>Automated routine maintenance tasks using Azure DevOps Integration, delivering significant weekly time savings. Facilitated PCF cloud migration with zero downtime and 100% data integrity.</li>
+        </ul>
+        <div class="tl-skills-row">
+          <span class="tl-tag">ASP.NET MVC</span><span class="tl-tag">SQL Server</span>
+          <span class="tl-tag">Web API</span><span class="tl-tag">Azure DevOps</span>
+          <span class="tl-tag">PCF</span><span class="tl-tag">SonarQube</span>
+          <span class="tl-tag">Qualys</span><span class="tl-tag">SD Elements</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wells Fargo - Engineer -->
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-company">Wells Fargo</div>
+      <div class="tl-role">Information Security Engineer</div>
+      <div class="tl-period">July 2019 – Jan 2022</div>
+      <div class="tl-body">
+        <ul>
+          <li>Streamlined deployment processes using Docker, reducing rollout times and enabling quicker feature updates.</li>
+          <li>Revamped application support documentation and guided junior engineers through a structured mentorship program, cultivating a high-performing team.</li>
+          <li>Conducted risk assessments and vulnerability analysis through application health monitoring to identify security weaknesses and recommend mitigation strategies.</li>
+          <li>Enhanced security policies and compliance documentation, implementing remediation measures that minimized risks and improved audit readiness.</li>
+        </ul>
+        <div class="tl-skills-row">
+          <span class="tl-tag">ASP.NET MVC</span><span class="tl-tag">Web API</span>
+          <span class="tl-tag">Azure DevOps</span><span class="tl-tag">DevSecOps</span>
+          <span class="tl-tag">Qualys</span><span class="tl-tag">Artifactory</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accenture -->
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-company">Accenture | H&B Insurance Solutions</div>
+      <div class="tl-role">Application Development Senior Analyst</div>
+      <div class="tl-period">June 2017 – July 2019</div>
+      <div class="tl-body">
+        <ul>
+          <li>Designed, built, and configured SPA applications meeting business process and application requirements; collaborated with Business Analysts for requirements and delivered release management.</li>
+        </ul>
+        <div class="tl-skills-row">
+          <span class="tl-tag">ASP.NET MVC</span><span class="tl-tag">Knockout JS</span>
+          <span class="tl-tag">SQL Server</span><span class="tl-tag">Web API</span>
+          <span class="tl-tag">Kentico</span><span class="tl-tag">Azure IaaS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wipro -->
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-company">Wipro Limited | Microsoft Gaming & Novartis</div>
+      <div class="tl-role">Senior Software Engineer</div>
+      <div class="tl-period">Apr 2015 – May 2017</div>
+      <div class="tl-body">
+        <ul>
+          <li>Application migration, server migration, and enhancements for Microsoft MSN gaming products. Managed application maintenance and support with incident management.</li>
+          <li>Gathered requirements, designed, and delivered solutions alongside stakeholders and the team on time.</li>
+        </ul>
+        <div class="tl-skills-row">
+          <span class="tl-tag">ASP.NET MVC</span><span class="tl-tag">SQL Server</span>
+          <span class="tl-tag">Web API</span><span class="tl-tag">Azure IaaS</span>
+          <span class="tl-tag">Oracle</span><span class="tl-tag">JavaScript</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ICrea -->
+    <div class="tl-item">
+      <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+      <div class="tl-company">ICrea Infotech | DOXEMR Podiatry Product</div>
+      <div class="tl-role">Senior Software Engineer</div>
+      <div class="tl-period">Apr 2012 – Apr 2015</div>
+      <div class="tl-body">
+        <ul>
+          <li>Application migration, enhancements, and maintenance for healthcare EMR products. Communicated with clients, gathered requirements, and delivered solutions with the team on time.</li>
+        </ul>
+        <div class="tl-skills-row">
+          <span class="tl-tag">ASP.NET MVC</span><span class="tl-tag">SQL Server</span>
+          <span class="tl-tag">ASP.NET</span><span class="tl-tag">JavaScript</span>
+          <span class="tl-tag">Agile</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">Certifications</div>
+  <h2 class="section-title">Professional <em>Credentials</em></h2>
+  <div class="cert-grid reveal">
+    <div class="cert-card">
+      <div class="cert-icon">☁️</div>
+      <div class="cert-name">Microsoft Certified: Azure Developer Associate</div>
+      <div class="cert-org">Microsoft · AZ-204</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🎯</div>
+      <div class="cert-name">Certified Ethical Hacker (CEH)</div>
+      <div class="cert-org">EC-Council</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-label">Awards</div>
+  <h2 class="section-title">Achievements &amp; <em>Recognition</em></h2>
+  <div class="ach-grid reveal">
+    <div class="ach-card">
+      <div class="ach-year">Wells Fargo · 2022</div>
+      <div class="ach-title">Technology Spotlight – Best Innovation Award</div>
+      <div class="ach-org">For Azure DevOps Integration initiative</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-year">Wells Fargo · 2023</div>
+      <div class="ach-title">Top Achiever of the Year</div>
+      <div class="ach-org">Annual performance recognition</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-year">Wells Fargo · 2024</div>
+      <div class="ach-title">Manager Spotlight Award</div>
+      <div class="ach-org">Outstanding performance recognition</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-year">Accenture</div>
+      <div class="ach-title">Account Automation & Innovation Award</div>
+      <div class="ach-org">Development of resource management dashboard</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-year">Accenture</div>
+      <div class="ach-title">CSR Award</div>
+      <div class="ach-org">Corporate Social Responsibility – Old age home &amp; orphanage support</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-year">Wipro Limited</div>
+      <div class="ach-title">Best Team Player</div>
+      <div class="ach-org">Pharma products maintenance &amp; support</div>
+    </div>
+    <div class="ach-card">
+      <div class="ach-year">ICrea Infotech</div>
+      <div class="ach-title">Innovative Coder Award</div>
+      <div class="ach-org">codeGiz Contest winner</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Education</div>
+  <h2 class="section-title">Academic <em>Background</em></h2>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div style="font-size:1.8rem;margin-bottom:.8rem;">🎓</div>
+      <div class="edu-degree">Master of Computer Applications (MCA)</div>
+      <div class="edu-school">Osmania University, Telangana</div>
+    </div>
+    <div class="edu-card">
+      <div style="font-size:1.8rem;margin-bottom:.8rem;">📘</div>
+      <div class="edu-degree">Bachelor of Sciences (B.Sc.)</div>
+      <div class="edu-school">Osmania University, Telangana</div>
+    </div>
+    <div class="edu-card">
+      <div style="font-size:1.8rem;margin-bottom:.8rem;">📗</div>
+      <div class="edu-degree">12th Grade</div>
+      <div class="edu-school">BIE, Andhra Pradesh</div>
+    </div>
+    <div class="edu-card">
+      <div style="font-size:1.8rem;margin-bottom:.8rem;">📙</div>
+      <div class="edu-degree">SSC (10th Grade)</div>
+      <div class="edu-school">BSE, Andhra Pradesh</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label" style="justify-content:center;">Contact</div>
+  <h2 class="section-title" style="text-align:center;">Let's <em>Connect</em></h2>
+  <div class="contact-inner reveal">
+    <div class="contact-card">
+      <div class="contact-item">
+        <div class="c-icon">✉️</div>
+        <div>
+          <div style="font-size:.78rem;color:var(--muted);margin-bottom:.2rem;">Email</div>
+          <a href="/cdn-cgi/l/email-protection#0c6e646d7e6d7864226e6d6b6b6d7a6d7e6d7c793e3d4c6b616d6560226f6361"><span class="__cf_email__" data-cfemail="85e7ede4f7e4f1edabe7e4e2e2e4f3e4f7e4f5f0b7b4c5e2e8e4ece9abe6eae8">[email&#160;protected]</span></a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon">📱</div>
+        <div>
+          <div style="font-size:.78rem;color:var(--muted);margin-bottom:.2rem;">Phone</div>
+          <span>+91 8978255911</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <div style="font-size:.78rem;color:var(--muted);margin-bottom:.2rem;">Location</div>
+          <span>Hyderabad, Telangana, India</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon">🌐</div>
+        <div>
+          <div style="font-size:.78rem;color:var(--muted);margin-bottom:.2rem;">Website</div>
+          <a href="https://bbharathkumar.com">bbharathkumar.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Bharath Kumar B · Lead Information Security Engineer · Hyderabad, India
+</footer>
+
+<script data-cfasync="fa
